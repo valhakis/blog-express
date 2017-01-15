@@ -73,6 +73,7 @@
    "yui"           : false,
 
    "globals"       : {
+      "$": true,
       "__root": true,
       "__base": true
    }        
