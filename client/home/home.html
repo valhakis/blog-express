@@ -1,7 +1,130 @@
-<div class="container">
-   <h1>Home</h1>
+<div class="container-fluid home">
+   <h2 class="well">Home</h2>
 
-   <div ng-repeat="i in [1, 2, 3, 4, 5, 6, 7]">
-      <p>Lorem sequi id eligendi assumenda reiciendis Dignissimos quaerat quae architecto maiores totam nostrum. Consectetur amet quam cupiditate dolor officia Porro necessitatibus aliquam soluta rem culpa? Magnam consectetur quo ipsa tempora</p>
+   <div class="row" ng-show="errors.length">
+      <div class="col-sm-12">
+         <div class="well">
+            <h3>Errors</h3>
+            <div class="alert alert-danger" ng-repeat="error in errors">
+               <string>ERR</string>
+               <span>{{error.message}}</span>
+            </div>
+         </div>
+      </div>
    </div>
+
+   <div class="row col-sm-12 col-lg-6">
+      <div class="col-sm-4">
+         <div class="well">
+            <h3>Create User</h3>
+         </div>
+         <form name="form" novalidate class="form well" ng-submit="home.createUser(form)">
+            <div class="form-group" 
+               ng-class="{'has-error': form.name.$dirty && form.name.$error.required}">
+               <label>Name</label>
+               <input type="text" name="name" class="form-control" ng-model="user.name" required>
+            </div>
+            <div class="form-group"
+               ng-class="{'has-error': form.email.$dirty && form.email.$error.email}">
+               <label>Email</label>
+               <input type="email" name="email" class="form-control" ng-model="user.email" required>
+            </div>
+            <div class="form-group"
+               ng-class="{'has-error': form.username.$dirty && form.username.$error.required}">
+               <label>Username</label>
+               <input type="text" name="username" class="form-control" ng-model="user.username" required>
+            </div>
+            <div class="form-group"
+               ng-class="{'has-error': form.password.$dirty && form.password.$error.required}">
+               <label>Password</label>
+               <input type="password" name="password" class="form-control" ng-model="user.password" required>
+            </div>
+            <button class="btn btn-default btn-block"
+               ng-disabled="form.$invalid">Create</button>
+         </form>
+      </div>
+      <div class="col-sm-8">
+         <div class="well">
+            <h3>Existing Users</h3>
+         </div>
+         <div class="list-of-users">
+            <table class="table table-bordered users-table">
+               <thead>
+                  <tr>
+                     <th>Id</th>
+                     <th>Name</th>
+                     <th>Email</th>
+                     <th>Username</th>
+                     <!--<th>Password</th>-->
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr ng-repeat="user in users">
+                     <td>{{user.id}}</td>
+                     <td>{{user.name}}</td>
+                     <td>{{user.email}}</td>
+                     <td>{{user.username}}</td>
+                     <!--<td>{{user.password}}</td>-->
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+      </div>
+   </div>
+
+   <div class="row col-sm-12 col-lg-6">
+      <div class="col-sm-4">
+         <div class="well">
+            <h3>Create User</h3>
+         </div>
+         <form name="post-form" novalidate class="form well" ng-submit="home.createUser(form)">
+            <div class="form-group" 
+               ng-class="{'has-error': form.name.$dirty && form.name.$error.required}">
+               <label>Name</label>
+               <input type="text" name="name" class="form-control" ng-model="user.name" required>
+            </div>
+            <div class="form-group"
+               ng-class="{'has-error': form.email.$dirty && form.email.$error.email}">
+               <label>Email</label>
+               <input type="email" name="email" class="form-control" ng-model="user.email" required>
+            </div>
+            <div class="form-group"
+               ng-class="{'has-error': form.username.$dirty && form.username.$error.required}">
+               <label>Username</label>
+               <input type="text" name="username" class="form-control" ng-model="user.username" required>
+            </div>
+            <div class="form-group"
+               ng-class="{'has-error': form.password.$dirty && form.password.$error.required}">
+               <label>Password</label>
+               <input type="password" name="password" class="form-control" ng-model="user.password" required>
+            </div>
+            <button class="btn btn-default btn-block"
+               ng-disabled="form.$invalid">Create</button>
+         </form>
+      </div>
+      <div class="col-sm-8">
+         <div class="well">
+            <h3>Existing Users</h3>
+         </div>
+         <table class="table table-bordered">
+            <thead>
+               <tr>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Username</th>
+                  <th>Password</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr ng-repeat="user in users">
+                  <td>{{user.name}}</td>
+                  <td>{{user.email}}</td>
+                  <td>{{user.username}}</td>
+                  <td>{{user.password}}</td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+   </div>
+
 </div>

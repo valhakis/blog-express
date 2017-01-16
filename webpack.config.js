@@ -1,16 +1,17 @@
 /* jshint ignore:start */
 const historyApiFallback = require('connect-history-api-fallback');
+const modRewrite = require('connect-modrewrite');
 /* jshint ignore:end */
+const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
-const modRewrite = require('connect-modrewrite');
 
 global.__root = path.join(__dirname, '..') + '/';
 console.log('__root', __root);
 
 const config = {
+   proxy: 'http://192.168.0.2:4000/',
    host: '192.168.0.2',
    port: 3000,
    template: __dirname + '/client/index.html',
@@ -55,15 +56,17 @@ module.exports = {
    },
    plugins: [
       new BrowserSyncPlugin({
-         host: config.host,
+         proxy: config.proxy,
+         open: false
+         //host: config.host,
          //port: config.port,
-         server: {
-            baseDir: [config.dist],
-            middleware: [
+         //server: {
+            //baseDir: [config.dist],
+            //middleware: [
                //historyApiFallback,
-               modRewrite([ '!\\.\\w+$ /index.html [L]' ])
-            ]
-         }
+               //modRewrite([ '!\\.\\w+$ /index.html [L]' ])
+            //]
+         //}
       }),
       new webpack.optimize.CommonsChunkPlugin('vendor.js'),
       new HtmlWebpackPlugin({
