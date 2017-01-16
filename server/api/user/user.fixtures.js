@@ -44,7 +44,7 @@ module.exports = [
 
 var users = [];
 
-for (var i=1; i<30; i++) {
+for (var i=1; i<5; i++) {
    var user = {
       model: 'User',
       data: {

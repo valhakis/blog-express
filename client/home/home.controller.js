@@ -1,5 +1,22 @@
+class User {
+   constructor($scope, $http) {
+      this.$scope = $scope;
+      this.$http = $http;
+   }
+}
+
+class Post {
+   constructor($scope, $http) {
+      this.$scope = $scope;
+      this.$http = $http;
+   }
+}
+
 class HomeController {
    constructor($http, $scope) {
+      this.Post = new Post();
+      this.User = new User();
+
       this.posts = [];
 
       this.$http = $http;

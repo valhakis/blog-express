@@ -11,6 +11,7 @@
   "description": "",
   "dependencies": {
     "angular": "^1.6.1",
+    "angular-cookies": "^1.6.1",
     "angular-resource": "^1.6.1",
     "angular-ui-router": "^0.3.2",
     "babel": "^6.5.2",

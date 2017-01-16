@@ -24,6 +24,7 @@ const config = {
       'moment',
       'angular-ui-router',
       'angular-resource',
+      'angular-cookies',
       'bootstrap',
    ]
 };
